@@ -7,6 +7,8 @@ class Company < ApplicationRecord
   validates :name, presence: true
   validates :company_code, presence: true, uniqueness: true
 
+  has_many :employees
+  
   private
 
   def generate_company_code

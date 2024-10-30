@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'home#top'
+  devise_for :companies, controllers: {
+    registrations: 'companies/registrations',
+    sessions: 'companies/sessions'
+  }
+  resources :companies, only: [:show, :edit]
+  
+  get 'home/company_top', to: 'home#company_top', as: 'company_top'
+  get 'home/employee_top', to: 'home#employee_top', as: 'employee_top'
+ 
 end

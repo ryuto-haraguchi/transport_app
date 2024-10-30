@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_30_030429) do
+ActiveRecord::Schema.define(version: 2024_10_30_043219) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,14 @@ ActiveRecord::Schema.define(version: 2024_10_30_030429) do
     t.string "company_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["company_code"], name: "index_companies_on_company_code", unique: true
+    t.index ["email"], name: "index_companies_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
 end

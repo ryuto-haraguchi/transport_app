@@ -6,7 +6,7 @@ class Companies::SessionsController < Devise::SessionsController
   
   protected
 
-  def after_sign_up_path_for(resource)
+  def after_sign_in_path_for(resource)
     company_path(resource)
   end
 
@@ -15,4 +15,9 @@ class Companies::SessionsController < Devise::SessionsController
       redirect_to company_path(current_company) 
     end
   end
+
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:company_code])
+  end
+
 end

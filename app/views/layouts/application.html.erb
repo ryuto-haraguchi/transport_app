@@ -10,13 +10,31 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-6 text-center">
-          <%= yield %>
-        </div>
+  <% if company_signed_in? %>
+    <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
+      <div class="row">
+        <h2 class="col-2 d-flex justify-content-center align-items-center">
+        <%= current_company.name %>
+        </h2> 
+        <ul class="nav nav-tabs col-2 offset-8">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">メニュー</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">項目</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">社員一覧</a>
+              <a class="dropdown-item" href="#">車両一覧</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        </ul>
       </div>
-    </div> 
+    </header>
+  <% end %>
+  <body>
+    <%= yield %>
   </body>
 </html>

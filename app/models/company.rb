@@ -1,6 +1,7 @@
 class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         authentication_keys: [:company_code]
   before_validation :generate_company_code, on: :create
 
   validates :name, presence: true

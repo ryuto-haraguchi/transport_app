@@ -7,7 +7,7 @@ class CreateVehicles < ActiveRecord::Migration[6.1]
       t.integer :mileage
       t.string :fuel_type
       t.references :company, null: false, foreign_key: true
-      t.references :employee, null: false, foreign_key: true
+      t.references :employee, null: false, foreign_key: true, null: true
 
       t.timestamps
     end

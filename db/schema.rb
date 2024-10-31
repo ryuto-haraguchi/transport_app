@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2024_10_31_065341) do
     t.integer "mileage"
     t.string "fuel_type"
     t.integer "company_id", null: false
-    t.integer "employee_id", null: false
+    t.integer "employee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_vehicles_on_company_id"

@@ -10,6 +10,7 @@ class VehiclesController < ApplicationController
     if @vehicle.save
       redirect_to company_vehicle_management_path(@vehicle.company.id)
     else
+      puts @vehicle.errors.full_messages
       render :new
     end
   end

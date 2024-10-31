@@ -18,13 +18,13 @@
     <th class="col-2 text-center">ドライバー名</th>
   </tr>
   <% @company_vehicles.each do |vehicle| %>
-  <tr>
-    <td><%= vehicle.vehicle_number %></td>
-    <td><%= vehicle.vehicle_type %></td>
-    <td><%= vehicle.mileage %></td>
-    <td><%= vehicle.fuel_type %></td>
-    <td><%= vehicle.status %></td>
-    <td><%= vehicle.employee %></td>
+  <tr class="row">
+    <td class="col-2 text-center"><%= vehicle.vehicle_number %></td>
+    <td class="col-2 text-center"><%= vehicle.vehicle_type %></td>
+    <td class="col-2 text-center"><%= vehicle.mileage.to_s + " km" %></td>
+    <td class="col-2 text-center"><%= vehicle.fuel_type %></td>
+    <td class="col-2 text-center"><%= vehicle.status %></td>
+    <td class="col-2 text-center"><%= vehicle.employee %></td>
   </tr>
   <% end %>
 </table>

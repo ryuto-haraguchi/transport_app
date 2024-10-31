@@ -1,0 +1,47 @@
+<% if companies_controller? %>
+    <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
+      <div class="row">
+        <h2 class="col-2 d-flex justify-content-center align-items-center">
+        <%= current_company.name %>
+        </h2> 
+        <ul class="nav nav-tabs col-3 offset-7">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">メニュー</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">項目</a>
+            <div class="dropdown-menu">
+              <%= link_to '社員管理', company_employee_management_path(current_company), class: "dropdown-item" %>
+              <a class="dropdown-item" href="#">車両管理</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+  <% elsif employees_controller? %>
+    <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
+      <div class="row">
+        <h2 class="col-2 d-flex justify-content-center align-items-center">
+        <%= current_employee.name %>
+        </h2> 
+        <ul class="nav nav-tabs col-3 offset-7">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">メニュー</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">項目</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">出勤</a>
+              <a class="dropdown-item" href="#">退勤</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_employee_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        </ul>
+      </div>
+    </header>
+  <% else %>
+<% end %>

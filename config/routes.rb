@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     registrations: 'companies/registrations',
     sessions: 'companies/sessions'
   }
-  resources :companies, only: [:show, :edit]
+  resources :companies, only: [:show, :edit] do
+    get "employee_management", to: "companies#employee_management", as: "employee_management"
+  end
 
   devise_for :employees, controllers: {
     registrations: 'employees/registrations',

@@ -5,17 +5,17 @@
   </div>
 </div>
 
-<table class="table">
-  <tr>
-    <th>社員番号</th>
-    <th>名前</th>
-    <th>電話番号</th>
+<table class="table container w-100">
+  <tr class="row">
+    <th class="col-2 text-center">社員番号</th>
+    <th class="col-2 text-center">名前</th>
+    <th class="col-2 text-center">電話番号</th>
   </tr>
   <% @company_employees.each do |employee| %>
-  <tr>
-    <td><%= employee.id %></td>
-    <td><%= employee.name %></td>
-    <td><%= employee.phone_number %></td>
+  <tr class="row">
+    <td class="col-2 text-center"><%= employee.id %></td>
+    <td class="col-2 text-center"><%= employee.name %></td>
+    <td class="col-2 text-center"><%= employee.phone_number %></td>
   </tr>
   <% end %>
 </table>

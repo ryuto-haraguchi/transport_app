@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   resources :companies, only: [:show, :edit] do
     get "employee_management", to: "companies#employee_management", as: "employee_management"
     get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
-    resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
   end
+
+  resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
 
   devise_for :employees, controllers: {
     registrations: 'employees/registrations',

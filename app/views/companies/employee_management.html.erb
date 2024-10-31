@@ -1,1 +1,23 @@
 <%= render "layouts/header" %>
+<div class="container w-100">
+  <div class="row">
+    <h1 class="col-6 offset-3 text-center">社員管理画面</h1>
+  </div>
+</div>
+
+<table class="table">
+  <tr>
+    <th>社員番号</th>
+    <th>名前</th>
+    <th>電話番号</th>
+  </tr>
+  <% @company_employees.each do |employee| %>
+  <tr>
+    <td><%= employee.id %></td>
+    <td><%= employee.name %></td>
+    <td><%= employee.phone_number %></td>
+  </tr>
+  <% end %>
+</table>
+
+

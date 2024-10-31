@@ -6,6 +6,8 @@ class Employee < ApplicationRecord
 
   belongs_to :company
   attr_accessor :company_code
+  
+  has_many :vehicles
 
   before_validation :assign_company
 

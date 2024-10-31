@@ -1,0 +1,31 @@
+<%= render "layouts/header" %>
+<div class="container w-100">
+  <div class="row">
+    <h1 class="col-6 offset-3 text-center">車両管理画面</h1>
+    <div class="col-3 text-right mt-1">
+      <%= link_to "車両登録", new_company_vehicle_path(current_company),
+        class: "text-right btn btn-success" %>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <tr>
+    <th>車両番号</th>
+    <th>車種</th>
+    <th>走行距離</th>
+    <th>燃油種類</th>
+    <th>稼働状況</th>
+    <th>ドライバー名</th>
+  </tr>
+  <% @company_vehicles.each do |vehicle| %>
+  <tr>
+    <td><%= vehicle.vehicle_number %></td>
+    <td><%= vehicle.vehicle_type %></td>
+    <td><%= vehicle.mileage %></td>
+    <td><%= vehicle.fuel_type %></td>
+    <td><%= vehicle.status %></td>
+    <td><%= vehicle.employee %></td>
+  </tr>
+  <% end %>
+</table>

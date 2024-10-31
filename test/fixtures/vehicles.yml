@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_number: MyString
+  vehicle_type: MyString
+  status: MyString
+  mileage: 1
+  fuel_type: MyString
+  company: one
+  employee: one
+
+two:
+  vehicle_number: MyString
+  vehicle_type: MyString
+  status: MyString
+  mileage: 1
+  fuel_type: MyString
+  company: two
+  employee: two

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'employees/show'
-  get 'employees/edit'
   root to: 'home#top'
   get 'home/company_top', to: 'home#company_top', as: 'company_top'
   get 'home/employee_top', to: 'home#employee_top', as: 'employee_top'
@@ -11,6 +9,8 @@ Rails.application.routes.draw do
   }
   resources :companies, only: [:show, :edit] do
     get "employee_management", to: "companies#employee_management", as: "employee_management"
+    get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
+    resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
   end
 
   devise_for :employees, controllers: {

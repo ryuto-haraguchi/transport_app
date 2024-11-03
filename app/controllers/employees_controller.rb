@@ -1,9 +1,8 @@
 class EmployeesController < ApplicationController
-  before_action :authenticate_employee!
+  before_action :authenticate_employee!, only: [:show ,:edit]
 
   def show
     @employee = Employee.find(params[:id])
-
   end
 
   def edit

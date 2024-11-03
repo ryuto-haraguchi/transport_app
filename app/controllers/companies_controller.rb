@@ -9,8 +9,12 @@ class CompaniesController < ApplicationController
   end
 
   def employee_management
-    @company =  Company.find(params[:company_id])
+    @company =  Company.find(current_company.id)
     @company_employees = @company.employees.includes(:attendances, :vehicles)
+  end
+
+  def employee_management_show
+    @company_employee = Employee.find(params[:employee_id])
   end
 
   def vehicle_management

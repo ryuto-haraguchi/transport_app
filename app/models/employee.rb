@@ -7,8 +7,9 @@ class Employee < ApplicationRecord
 
   belongs_to :company
   attr_accessor :company_code
-  has_one :vehicles, through: :attendances
   has_many :attendances, dependent: :destroy
+  has_many :vehicles, through: :attendances
+  
 
   before_validation :assign_company
 

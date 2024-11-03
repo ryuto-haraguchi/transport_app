@@ -30,6 +30,10 @@ class AttendancesController < ApplicationController
 
   private
 
+  def attendance_params 
+    params.require(:attendance).permit(:clock_in_time, :clock_out_time, :employee_id, :vehicle_id)
+  end
+
   def set_vehicle
     @vehicle = Vehicle.find(params[:attendance][:vehicle_id])
   end

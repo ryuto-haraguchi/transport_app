@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:show, :edit] do
     get "employee_management", to: "companies#employee_management", as: "employee_management"
     get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
+    get "employee_management_show/:employee_id", to: "companies#employee_management_show", as: "employee_management_show"
   end
 
   resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]

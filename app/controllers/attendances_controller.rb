@@ -1,8 +1,9 @@
 class AttendancesController < ApplicationController
-  before_action :set_vehicle, only: [:clock_in, :clock_out]
+  before_action :set_vehicle, only: [:clock_in]
   before_action :authenticate_employee!
 
   def new
+    @employee = current_employee
     @attendance = Attendance.new
   end
 
@@ -17,10 +18,10 @@ class AttendancesController < ApplicationController
   end
   
   def clock_out
-    @attendance = Attendance.find_by(employee: current_employee, vehicle: @vehicle, clock_in_time: nil)
-    if @attendance
+    @attendance = Attendance.find_by(employee: current_employee, clock_out_time: nil)
+    if @attendance.save
       @attendance.update(clock_out_time: Time.current)
-      @vehicle.update(status: "未稼働")
+      @attendance.vehicle.update(status: "未稼働")
       redirect_to employee_path(current_employee), notice: "退勤しました"
     else
       redirect_to employee_path(current_employee), alert: "退勤に失敗しました"
@@ -30,7 +31,7 @@ class AttendancesController < ApplicationController
   private
 
   def set_vehicle
-    @vehicle = Vehicle.find(params[:vehicle_id])
+    @vehicle = Vehicle.find(params[:attendance][:vehicle_id])
   end
       
 end

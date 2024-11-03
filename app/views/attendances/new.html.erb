@@ -1,0 +1,23 @@
+<div class="container w-100">
+  <div class="row">
+    <div class="col-6 offset-3 text-center mt-3">
+    <% if current_employee.attendances.any? && current_employee.attendances.last.clock_out_time.nil? %>
+      <h2>退勤</h2>
+        <div class="actions mt-3">
+          <%= link_to "退勤", clock_out_attendance_path(current_employee), method: :post, class: "btn btn-primary" %>
+        </div>
+    <% else %>
+      <h2>出勤</h2>
+        <%= form_with model: [@employee, @attendance], url: clock_in_attendance_path(current_employee) do |f| %>
+          <div class="field mt-3">
+            <%= f.label :vehicle_number, "車両" %><br />
+            <%= f.collection_select :vehicle_id, Vehicle.all, :id, :vehicle_number, { prompt: "車両を選択"} %>
+          </div>
+          <div class="actions mt-3">
+            <%= f.submit "出勤" %>
+          </div>
+        <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

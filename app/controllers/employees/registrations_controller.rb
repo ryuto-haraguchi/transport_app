@@ -9,7 +9,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:company_code, :phone_number, :name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:company_code, :phone_number, :name, :email])
   end
 
   def after_sign_up_path_for(resource)

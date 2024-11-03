@@ -19,6 +19,13 @@ Rails.application.routes.draw do
     sessions: 'employees/sessions'
   }
   resources :employees, only: [:show, :edit]
+
+  resources :attendances, only: [:create, :update] do
+    member do
+      post 'clock_in'
+      post 'clock_out'
+    end
+  end
   
   
  

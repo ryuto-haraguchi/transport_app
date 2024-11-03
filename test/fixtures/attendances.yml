@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee: one
+  vehicle: one
+  clock_in_time: 2024-11-03 13:47:08
+  clock_out_time: 2024-11-03 13:47:08
+
+two:
+  employee: two
+  vehicle: two
+  clock_in_time: 2024-11-03 13:47:08
+  clock_out_time: 2024-11-03 13:47:08

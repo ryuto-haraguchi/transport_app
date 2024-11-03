@@ -1,4 +1,4 @@
 class Vehicle < ApplicationRecord
   belongs_to :company
-  belongs_to :employee, optional: true
+  has_many :employees, optional: true, through: :attendances
 end

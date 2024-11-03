@@ -3,6 +3,9 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @active_employees = @company.employees.joins(:attendances)
+                                .where(attendances: { clock_out_time: nil })
+                                .select('employees.*, attendances.clock_in_time')
   end
 
   def edit

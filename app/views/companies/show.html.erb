@@ -1,1 +1,25 @@
 <%= render "layouts/header" %>
+<div class="container w-100">
+  <div class="row">
+    <div class="col-6 offset-3 text-center">
+      <h3>稼動状況一覧</h3>
+      <% if @active_employees.any? %>
+        <table class="table">
+          <% @active_employees.each do |employee| %>
+          <tr>
+            <th>社員名</th>
+            <th>勤務開始時間</th>
+          </tr>
+          <tr>
+            <td><%= employee.name %></td>
+            <td><%= Time.parse(employee.clock_in_time).strftime("%m月%d日 %H:%M")%></td>
+          </tr>
+          <% end %>
+      <% else %>
+        <p>稼働中の社員はいません</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

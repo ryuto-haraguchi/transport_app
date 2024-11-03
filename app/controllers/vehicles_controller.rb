@@ -4,7 +4,6 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    #作成できない、render :newでnew.html.erbに戻る
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.company = current_company
     if @vehicle.save

@@ -13,7 +13,7 @@ class Employee < ApplicationRecord
   before_validation :assign_company
 
   validates :name, presence: true
-  validates :phone_number, presence: true, uniqueness: true
+  validates :phone_number, presence: true, uniqueness: true, length: {minimum:11, maximum:11}, format: { with: /\A[0-9]+\z/, message: "は半角数字で入力してください" }
   validates :company_id, presence: true
 
   private

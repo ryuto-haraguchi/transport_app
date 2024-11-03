@@ -8,7 +8,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :contact_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :contact_number, :email, :company_code])
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :contact_number])
   end
 

@@ -1,2 +1,29 @@
-<h1>Vehicles#edit</h1>
-<p>Find me in app/views/vehicles/edit.html.erb</p>
+<%= render "layouts/header" %>
+<div class="container w-100">
+  <div class="row">
+    <h1 class="col-6 offset-3 text-center">車両編集画面</h1>
+    <div class="col-6 offset-3 text-center">
+    <%= form_with model: @vehicle do |f| %>
+      <div class="field mt-3">
+        <%= f.label :vehicle_number, "車両番号" %><br />
+        <%= f.text_field :vehicle_number %>
+      </div>
+      <div class="field mt-3">
+        <%= f.label :vehicle_type, "車種" %><br />
+        <%= f.text_field :vehicle_type %>
+      </div>
+      <div class="field mt-3">
+        <%= f.label :mileage, "走行距離" %><br />
+        <%= f.number_field :mileage %>
+      </div>
+      <div class="field mt-3">
+        <%= f.label :fuel_type, "燃油種類" %><br />
+        <%= f.text_field :fuel_type %>
+      </div>
+      <div class="actions mt-3">
+        <%= f.submit "更新" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

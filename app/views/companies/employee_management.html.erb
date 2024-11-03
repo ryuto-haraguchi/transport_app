@@ -33,7 +33,9 @@
         未使用
       <% end %>
     </td>
-    <td class="col-1 text-center"><%= link_to "詳細", company_employee_management_show_path(company_id: current_company, employee_id: employee.id) %></td>
+    <td class="col-1 text-center">
+      <%= link_to "詳細", company_employee_management_show_path(company_id: current_company, employee_id: employee.id) %>
+    </td>
   </tr>
   <% end %>
 </table>

@@ -19,9 +19,16 @@ class VehiclesController < ApplicationController
   end
 
   def edit
+    @vehicle = Vehicle.find(params[:id])
   end
 
   def update
+    @vehicle = Vehicle.find(params[:id])
+    if @vehicle.update(vehicle_params)
+      redirect_to company_vehicle_management_path(@vehicle.company.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_11_03_044708) do
+ActiveRecord::Schema.define(version: 2024_11_03_105712) do
 
   create_table "attendances", force: :cascade do |t|
     t.integer "employee_id", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2024_11_03_044708) do
   create_table "vehicles", force: :cascade do |t|
     t.string "vehicle_number"
     t.string "vehicle_type"
-    t.string "status"
+    t.string "status", default: "未稼働"
     t.integer "mileage"
     t.string "fuel_type"
     t.integer "company_id", null: false

@@ -22,8 +22,9 @@ Rails.application.routes.draw do
 
   resources :attendances, only: [:create, :update] do
     member do
-      post 'clock_in'
-      post 'clock_out'
+      get 'new', to: 'attendances#new', as: 'new_attendance'
+      post 'clock_in', to: 'attendances#clock_in', as: 'clock_in'
+      post 'clock_out', to: 'attendances#clock_out', as: 'clock_out'
     end
   end
   

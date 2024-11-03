@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_10_31_065341) do
+ActiveRecord::Schema.define(version: 2024_11_03_044708) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "vehicle_id", null: false
+    t.datetime "clock_in_time"
+    t.datetime "clock_out_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_attendances_on_employee_id"
+    t.index ["vehicle_id"], name: "index_attendances_on_vehicle_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -58,6 +69,8 @@ ActiveRecord::Schema.define(version: 2024_10_31_065341) do
     t.index ["employee_id"], name: "index_vehicles_on_employee_id"
   end
 
+  add_foreign_key "attendances", "employees"
+  add_foreign_key "attendances", "vehicles"
   add_foreign_key "vehicles", "companies"
   add_foreign_key "vehicles", "employees"
 end

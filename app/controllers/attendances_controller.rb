@@ -1,6 +1,10 @@
 class AttendancesController < ApplicationController
   before_action :set_vehicle, only: [:clock_in, :clock_out]
-  before_action :authenticate_employee
+  before_action :authenticate_employee!
+
+  def new
+    @attendance = Attendance.new
+  end
 
   def clock_in
     @attendance = Attendance.new(employee: current_employee, vehicle: @vehicle, clock_in_time: Time.current)

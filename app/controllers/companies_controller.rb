@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_company  
+  before_action :authenticate_company!
 
   def show
     @company = Company.find(params[:id])

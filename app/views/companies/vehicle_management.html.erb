@@ -24,7 +24,14 @@
     <td class="col-2 text-center"><%= vehicle.mileage.to_s + " km" %></td>
     <td class="col-2 text-center"><%= vehicle.fuel_type %></td>
     <td class="col-2 text-center"><%= vehicle.status %></td>
-    <td class="col-2 text-center"><%= vehicle.employee %></td>
+    <td class="col-2 text-center">
+      <% latest_attendance = vehicle.attendances.order(clock_in_time: :desc).first %>
+      <% if latest_attendance&.employee && vehicle.status == "稼働中" %>
+        <%= latest_attendance.employee.name %>
+      <% else %>
+        未使用
+      <% end %>
+    </td>
   </tr>
   <% end %>
 </table>

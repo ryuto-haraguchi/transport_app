@@ -9,22 +9,22 @@
 
         <div class="field mt-5">
           <%= f.label :name, "会社名称" %><br />
-          <%= f.text_field :name, autofocus: true %>
+          <%= f.text_field :name, autofocus: true, placeholder: "（株）〇〇運送" %>
         </div>
 
         <div class="field mt-2">
           <%= f.label :address, "住所" %><br />
-          <%= f.text_field :address %>
+          <%= f.text_area :address, placeholder: "東京都新宿区西新宿1-2-34" %>
         </div>
 
         <div class="field mt-2">
           <%= f.label :contact_number, "電話番号" %><br />
-          <%= f.telephone_field :contact_number %>
+          <%= f.telephone_field :contact_number, placeholder: "01234567890" %>
         </div>
 
         <div class="field mt-2">
           <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email %>
+          <%= f.email_field :email, placeholder: "@example.com" %>
         </div>
 
         <div class="field mt-2">
@@ -32,16 +32,16 @@
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "任意のパスワード" %>
         </div>
 
         <div class="field mt-2">
           <%= f.label :password_confirmation, "確認用パスワード" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワード" %>
         </div>
 
         <div class="actions mt-2 mb-2">
-          <%= f.submit "登録", class: "btn btn-secondary" %>
+          <%= f.submit "登録", class: "btn btn-success" %>
         </div>
       <% end %>
     </div>

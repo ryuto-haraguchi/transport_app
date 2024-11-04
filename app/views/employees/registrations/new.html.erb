@@ -7,36 +7,36 @@
 
         <div class="field mt-3">
           <%= f.label :company_code, "会社コード" %><br />
-          <%= f.text_field :company_code, autofocus: true %>
+          <%= f.text_field :company_code, autofocus: true, placeholder: "会社コードを入力" %>
         </div>
 
         <div class="field mt-3">
           <%= f.label :name, "名前(スペースなし)" %><br />
-          <%= f.text_field :name %>
+          <%= f.text_field :name, placeholder: "山田太郎"%>
         </div>
 
         <div class="field mt-3">
-          <%= f.label :phone_number, "電話番号" %><br />
-          <%= f.telephone_field :phone_number %>
+          <%= f.label :phone_number, "電話番号(半角数字、ハイフン-無し)" %><br />
+          <%= f.telephone_field :phone_number, placeholder: "01234567890" %>
         </div>
 
         <div class="field mt-3">
           <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autocomplete: "email" %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "@example.com" %>
         </div>
 
         <div class="field mt-3">
-          <%= f.label :password, "パスワード" %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.label :password, "パスワード(６文字以上)" %><br />
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "任意のパスワード" %>
         </div>
 
         <div class="field mt-3">
-          <%= f.label :password_confirmation, "パスワード確認" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.label :password_confirmation, "確認用パスワード" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワード" %>
         </div>
 
         <div class="actions mt-3">
-          <%= f.submit "登録" %>
+          <%= f.submit "登録", class: "btn btn-success" %>
         </div>
       <% end %>
     </div>

@@ -9,6 +9,16 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      redirect_to company_path(current_company)
+    else
+      render :edit
+    end
   end
 
   def employee_management
@@ -23,6 +33,12 @@ class CompaniesController < ApplicationController
   def vehicle_management
     @company =  Company.find(params[:company_id])
     @company_vehicles = @company.vehicles.includes(:attendances, :employees)
+  end
+
+  private
+
+  def company_params
+    params.require(:company).permit(:name, :address, :contact_number)
   end
 
 end

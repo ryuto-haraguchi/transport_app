@@ -1,4 +1,4 @@
-<% if companies_controller? || vehicles_controller? %>
+<% if companies_controller? && company_signed_in? || vehicles_controller? %>
     <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
       <div class="row">
         <h2 class="col-6 d-flex justify-content-start align-items-center">
@@ -22,7 +22,7 @@
         </ul>
       </div>
     </header>
-<% elsif employees_controller? %>
+<% elsif employees_controller? && employee_signed_in? %>
     <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
       <div class="row">
         <h2 class="col-6 d-flex justify-content-start align-items-center">

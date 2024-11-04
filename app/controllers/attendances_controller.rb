@@ -27,7 +27,7 @@ class AttendancesController < ApplicationController
       redirect_to employee_path(current_employee), alert: "退勤に失敗しました"
     end
   end
-
+  
   private
 
   def attendance_params 

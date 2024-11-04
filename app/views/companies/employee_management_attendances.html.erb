@@ -1,0 +1,28 @@
+<div class="container w-100">
+  <div class="row">
+    <h1 class="col-6 offset-3 text-center">勤怠履歴</h1>
+  </div>
+</div>
+
+<table class="table container w-100">
+  <tr class="row">
+    <th class="col-2 text-center"><%= @employee.name %></th>
+    <th class="col-2 text-center">日付</th>
+    <th class="col-2 text-center">出勤時間</th>
+    <th class="col-2 text-center">退勤時間</th>
+    <th class="col-2 text-center">稼働時間</th>
+    <th class="col-2 text-center">使用車両</th>
+  </tr>
+  <% @employee_attendances.each do |attendance| %>
+  <tr class="row">
+    <td class="col-2 text-center"></td>
+    <td class="col-2 text-center">
+      <%= attendance.clock_in_time.strftime("%m月%d日") %>(<%= TransportApp::Application::DAYS_OF_WEEK[attendance.clock_in_time.wday] %>)
+    </td>
+    <td class="col-2 text-center"><%= attendance.clock_in_time.strftime("%H:%M") %></td>
+    <td class="col-2 text-center"><%= attendance.clock_out_time.present? ? attendance.clock_out_time.strftime("%H:%M") : "退勤時間未登録" %></td>
+    <td class="col-2 text-center"><%= attendance.work_duration || "退勤時間未登録" %></td>
+    <td class="col-2 text-center"><%= attendance.vehicle.vehicle_number %></td>
+  </tr>
+  <% end %>
+</table>

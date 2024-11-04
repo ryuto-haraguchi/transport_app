@@ -19,5 +19,6 @@ module TransportApp
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
+    DAYS_OF_WEEK = ["日", "月", "火", "水", "木", "金", "土"]
   end
 end

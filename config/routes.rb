@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "employee_management", to: "companies#employee_management", as: "employee_management"
     get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
     get "employee_management_show/:employee_id", to: "companies#employee_management_show", as: "employee_management_show"
+    get "employee_management_attendance/:employee_id", to: "companies#employee_management_attendances", as: "employee_management_attendances"
   end
 
   resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
@@ -21,9 +22,8 @@ Rails.application.routes.draw do
   }
   resources :employees, only: [:show, :edit]
 
-  resources :attendances, only: [:create, :update] do
+  resources :attendances, only: [:create, :update, :index, :new, :show] do
     member do
-      get 'new', to: 'attendances#new', as: 'new_attendance'
       post 'clock_in', to: 'attendances#clock_in', as: 'clock_in'
       post 'clock_out', to: 'attendances#clock_out', as: 'clock_out'
     end

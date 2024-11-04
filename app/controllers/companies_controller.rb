@@ -34,6 +34,11 @@ class CompaniesController < ApplicationController
     @company_employee = Employee.find(params[:employee_id])
   end
 
+  def employee_management_attendances
+    @employee = Employee.find(params[:employee_id])
+    @employee_attendances = @employee.attendances.order('attendances.clock_in_time DESC')
+  end
+
   def vehicle_management
     @company =  Company.find(params[:company_id])
     @company_vehicles = @company.vehicles.includes(:attendances, :employees)

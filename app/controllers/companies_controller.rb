@@ -6,6 +6,10 @@ class CompaniesController < ApplicationController
     @active_employees = @company.employees.joins(:attendances)
                                 .where(attendances: { clock_out_time: nil })
                                 .select('employees.*, attendances.clock_in_time')
+    @attendances = Attendance.joins(:employee)
+                            .where(employees: { company_id: @company.id })
+                            .where(attendances: { clock_in_time: Date.yesterday.all_day })
+                            .order('attendances.clock_out_time DESC')
   end
 
   def edit

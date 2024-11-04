@@ -1,9 +1,9 @@
 <div class="container w-100">
   <div class="row">
-    <div class="col-6 offset-3 text-center">
+    <div class="col-6 text-center mt-3", style="height: 450px; overflow-y: scroll;">
       <h3>稼動状況一覧</h3>
       <% if @active_employees.any? %>
-        <table class="table">
+        <table class="table mt-3">
           <% @active_employees.each do |employee| %>
           <tr>
             <th>社員名</th>
@@ -13,10 +13,31 @@
             <td><%= employee.name %></td>
             <td><%= Time.parse(employee.clock_in_time).strftime("%m月%d日 %H:%M")%></td>
           </tr>
+        </table>
           <% end %>
       <% else %>
-        <p>稼働中の社員はいません</p>
+        <p class="mt-3">稼働中の社員はいません</p>
       <% end %>
+    </div>
+    <div class="col-6 text-center mt-3",  style="height: 450px; overflow-y: scroll;">
+      <h3>勤務履歴一覧(前日分)</h3> <%#この横に勤務履歴の一覧ページへのリンクを追加%>
+        <table class="table mt-3">
+          <tr>
+            <th>社員名</th>
+            <th>勤務開始時間</th>
+            <th>勤務終了時間</th>
+            <th>稼動時間</th>
+          </tr>
+          <% @attendances.each do |attendance| %>
+          <tr>
+            <td><%= attendance.employee.name %></td>
+            <td><%= attendance.clock_in_time.strftime("%m月%d日 %H:%M") %></td>
+            <td><%= attendance.clock_out_time.strftime("%m月%d日 %H:%M") %></td>
+            <td><%= attendance.work_duration || "退勤時間が登録されていません" %></td>
+            <%#退勤時間が登録されていません→退勤時間登録ページへ遷移%>
+          </tr>
+          <% end %>
+        </table>
     </div>
   </div>
 </div>

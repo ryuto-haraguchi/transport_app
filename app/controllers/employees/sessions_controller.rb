@@ -20,5 +20,9 @@ class Employees::SessionsController < Devise::SessionsController
       redirect_to employee_path(current_employee) 
     end
   end
+
+  def after_timeout_path_for(resource_or_scope)
+    new_employee_session_path 
+  end
   
 end

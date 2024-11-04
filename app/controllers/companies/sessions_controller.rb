@@ -20,4 +20,8 @@ class Companies::SessionsController < Devise::SessionsController
     devise_parameter_sanitizer.permit(:sign_in, keys: [:company_code])
   end
 
+  def after_timeout_path_for(resource_or_scope)
+    new_company_session_path
+  end
+
 end

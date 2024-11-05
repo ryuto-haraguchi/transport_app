@@ -9,8 +9,8 @@ class Employee < ApplicationRecord
   attr_accessor :company_code
   has_many :attendances, dependent: :destroy
   has_many :vehicles, through: :attendances
+  has_many :projects
   
-
   before_validation :assign_company
 
   validates :name, presence: true

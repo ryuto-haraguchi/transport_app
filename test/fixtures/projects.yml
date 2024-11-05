@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  planned_collection_date: 2024-11-05 13:51:45
+  planned_delivery_date: 2024-11-05 13:51:45
+  project_name: MyString
+  description: MyText
+  vehicle_type: MyString
+  employee: one
+  vehicle: one
+  status: 1
+  delivery_slip_images: 
+  amount: 9.99
+  actual_collection_date: 2024-11-05 13:51:45
+  actual_delivery_date: 2024-11-05 13:51:45
+
+two:
+  planned_collection_date: 2024-11-05 13:51:45
+  planned_delivery_date: 2024-11-05 13:51:45
+  project_name: MyString
+  description: MyText
+  vehicle_type: MyString
+  employee: two
+  vehicle: two
+  status: 1
+  delivery_slip_images: 
+  amount: 9.99
+  actual_collection_date: 2024-11-05 13:51:45
+  actual_delivery_date: 2024-11-05 13:51:45

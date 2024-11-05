@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
     get "employee_management_show/:employee_id", to: "companies#employee_management_show", as: "employee_management_show"
     get "employee_management_attendance/:employee_id", to: "companies#employee_management_attendances", as: "employee_management_attendances"
+    resources :projects
   end
 
   resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
@@ -20,7 +21,14 @@ Rails.application.routes.draw do
     registrations: 'employees/registrations',
     sessions: 'employees/sessions'
   }
-  resources :employees, only: [:show, :edit]
+  resources :employees, only: [:show, :edit] do 
+    resources :projects, only: [:index, :show] do
+      member do
+        patch :start_project
+        patch :complete_project
+      end
+    end
+  end
 
   resources :attendances, only: [:create, :update, :index, :new, :show] do
     member do
@@ -28,5 +36,5 @@ Rails.application.routes.draw do
       post 'clock_out', to: 'attendances#clock_out', as: 'clock_out'
     end
   end
-  
+
 end

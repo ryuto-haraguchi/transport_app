@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
-  belongs_to :employee
+  belongs_to :employee, optional: true
   belongs_to :vehicle, optional: true
+  belongs_to :company
 
   has_many_attached :delivery_slip_images
 
@@ -10,4 +11,9 @@ class Project < ApplicationRecord
   validates :vehicle_type, presence: true
   validates :planned_collection_date, presence: true
   validates :planned_delivery_date, presence: true
+
+  def set_vehicle_type(weight, category, kind)
+    self.vehicle_type = "#{weight}#{category}#{kind}"
+  end
+
 end

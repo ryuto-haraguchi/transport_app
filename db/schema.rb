@@ -89,14 +89,16 @@ ActiveRecord::Schema.define(version: 2024_11_05_045857) do
     t.string "project_name"
     t.text "description"
     t.string "vehicle_type"
-    t.integer "employee_id", null: false
-    t.integer "vehicle_id", null: false
+    t.integer "company_id", null: false
+    t.integer "employee_id"
+    t.integer "vehicle_id"
     t.integer "status", default: 0
     t.integer "amount"
     t.datetime "actual_collection_date"
     t.datetime "actual_delivery_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_projects_on_company_id"
     t.index ["employee_id"], name: "index_projects_on_employee_id"
     t.index ["vehicle_id"], name: "index_projects_on_vehicle_id"
   end
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 2024_11_05_045857) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attendances", "employees"
   add_foreign_key "attendances", "vehicles"
+  add_foreign_key "projects", "companies"
   add_foreign_key "projects", "employees"
   add_foreign_key "projects", "vehicles"
   add_foreign_key "vehicles", "companies"

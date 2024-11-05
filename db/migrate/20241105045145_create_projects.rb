@@ -6,8 +6,9 @@ class CreateProjects < ActiveRecord::Migration[6.1]
       t.string :project_name
       t.text :description
       t.string :vehicle_type
-      t.references :employee, null: false, foreign_key: true
-      t.references :vehicle, null: false, foreign_key: true
+      t.references :company, null: false, foreign_key: true
+      t.references :employee, foreign_key: true
+      t.references :vehicle, foreign_key: true
       t.integer :status, default: 0
       t.integer :amount
       t.datetime :actual_collection_date

@@ -7,9 +7,16 @@ class Companies::ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
   end
 
   def create
+    @project = Project.new(project_params)
+    if @project.save
+      redirect_to company_project_path(current_company, @project)
+    else
+      render :new
+    end
   end
 
   def edit

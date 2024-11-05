@@ -1,4 +1,4 @@
-<% if companies_controller? && company_signed_in? || vehicles_controller? %>
+<% if (controller_path.start_with?("companies")) && company_signed_in? || vehicles_controller? %>
     <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
       <div class="row">
         <h2 class="col-6 d-flex justify-content-start align-items-center">
@@ -13,6 +13,7 @@
             <div class="dropdown-menu">
               <%= link_to '社員管理', company_employee_management_path(current_company), class: "dropdown-item" %>
               <%= link_to '車両管理', company_vehicle_management_path(current_company), class: "dropdown-item" %>
+              <%= link_to '案件作成', new_companies_project_path, class: "dropdown-item" %>
               <%= link_to '会社情報編集', edit_company_path(current_company), class: "dropdown-item" %>
             </div>
           </li>
@@ -22,7 +23,7 @@
         </ul>
       </div>
     </header>
-<% elsif employees_controller? && employee_signed_in? %>
+<% elsif (controller_path.start_with?("employees")) && employee_signed_in? %>
     <header class="container-fluid shadow-sm p-3 mb-3 bg-white rounded">
       <div class="row">
         <h2 class="col-6 d-flex justify-content-start align-items-center">

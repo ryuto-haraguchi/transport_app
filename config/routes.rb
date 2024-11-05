@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     registrations: 'companies/registrations',
     sessions: 'companies/sessions'
   }
+
+  devise_for :employees, controllers: {
+    registrations: 'employees/registrations',
+    sessions: 'employees/sessions'
+  }
+
   resources :companies, only: [:show, :edit, :update, :destroy] do
     get "employee_management", to: "companies#employee_management", as: "employee_management"
     get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
@@ -17,23 +23,25 @@ Rails.application.routes.draw do
 
   resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
 
-  devise_for :employees, controllers: {
-    registrations: 'employees/registrations',
-    sessions: 'employees/sessions'
-  }
-  resources :employees, only: [:show, :edit] do 
-    resources :projects, only: [:index, :show] do
-      member do
-        patch :start_project
-        patch :complete_project
-      end
-    end
+  namespace :companies do
+    resources :projects
   end
+
+  resources :employees, only: [:show, :edit] 
 
   resources :attendances, only: [:create, :update, :index, :new, :show] do
     member do
       post 'clock_in', to: 'attendances#clock_in', as: 'clock_in'
       post 'clock_out', to: 'attendances#clock_out', as: 'clock_out'
+    end
+  end
+
+  namespace :employees do
+    resources :projects, only: [:index, :show] do
+      member do
+        patch :start_project 
+        patch :complete_project 
+      end
     end
   end
 

@@ -1,5 +1,4 @@
-class ApplicationController < ActionController::Base
-  
+class ApplicationController < ActionController::Base  
   before_action :authenticate_company!, if: :companies_controller?
   before_action :authenticate_employee!, if: :employees_controller?
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/company_top', to: 'home#company_top', as: 'company_top'
   get 'home/employee_top', to: 'home#employee_top', as: 'employee_top'
 
+  
   devise_for :companies, controllers: {
     registrations: 'companies/registrations',
     sessions: 'companies/sessions'

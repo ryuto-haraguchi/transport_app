@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-6 offset-3 text-center mt-3">案件一覧</h2>
+</div>
+<div class="row mt-3">
+  <div class="col-12">
+    <table class="table table-striped">
+        <tr>
+          <th>案件名</th>
+          <th>内容</th>
+          <th>車種</th>
+          <th>金額</th>
+          <th>集荷日</th>
+          <th>配達日</th>
+          <th>担当者</th>
+          <th>車両</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @projects.each do |project| %>
+        <tr>
+            <td class="text-nowrap"><%= project.project_name.presence || '未設定' %></td>
+          <td class="text-nowrap" style="max-width: 200px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+            <%= project.description.presence || '未設定' %>
+          </td>
+          <td class="text-nowrap"><%= project.vehicle_type.presence || '未設定' %></td>
+          <td class="text-nowrap"><%= project.amount.present? ? number_to_currency(project.amount.to_i, unit: '円', format: '%n%u', precision: 0) : '未設定' %></td>
+          <td class="text-nowrap"><%= project.planned_collection_date.present? ? project.planned_collection_date.strftime('%Y/%m/%d') : '未設定' %></td>
+          <td class="text-nowrap"><%= project.planned_delivery_date.present? ? project.planned_delivery_date.strftime('%Y/%m/%d') : '未設定' %></td>
+          <td class="text-nowrap"><%= project.employee&.name.presence || '未設定' %></td>
+          <td class="text-nowrap"><%= project.vehicle&.vehicle_number.presence || '未設定' %></td>
+          <td class="text-nowrap"><%= link_to '詳細', companies_project_path(project) %></td>
+          <td class="text-nowrap"><%= link_to '編集', edit_companies_project_path(project) %></td>
+          <td class="text-nowrap"><%= link_to '削除', companies_project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>

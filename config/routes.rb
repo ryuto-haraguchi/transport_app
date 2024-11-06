@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'home/company_top', to: 'home#company_top', as: 'company_top'
   get 'home/employee_top', to: 'home#employee_top', as: 'employee_top'
 
-  
+
   devise_for :companies, controllers: {
     registrations: 'companies/registrations',
     sessions: 'companies/sessions'
@@ -14,19 +14,26 @@ Rails.application.routes.draw do
     sessions: 'employees/sessions'
   }
 
+  namespace :companies do
+    resources :projects
+  end
+
   resources :companies, only: [:show, :edit, :update, :destroy] do
     get "employee_management", to: "companies#employee_management", as: "employee_management"
     get "vehicle_management", to: "companies#vehicle_management", as: "vehicle_management"
     get "employee_management_show/:employee_id", to: "companies#employee_management_show", as: "employee_management_show"
     get "employee_management_attendance/:employee_id", to: "companies#employee_management_attendances", as: "employee_management_attendances"
-    resources :projects
   end
 
   resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
 
-  namespace :companies do
-    resources :projects
-  end
+  namespace :employees do
+    resources :projects, only: [:index, :show] do
+      member do
+        patch :start_project 
+        patch :complete_project 
+      end
+    end
 
   resources :employees, only: [:show, :edit] 
 
@@ -37,13 +44,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :employees do
-    resources :projects, only: [:index, :show] do
-      member do
-        patch :start_project 
-        patch :complete_project 
-      end
-    end
+  
   end
 
 end

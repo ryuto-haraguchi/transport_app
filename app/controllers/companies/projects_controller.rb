@@ -1,6 +1,7 @@
 class Companies::ProjectsController < ApplicationController
 
   def index
+    @projects = Project.where(company_id: current_company.id)
   end
 
   def show

@@ -14,6 +14,7 @@
               <%= link_to '社員管理', company_employee_management_path(current_company), class: "dropdown-item" %>
               <%= link_to '車両管理', company_vehicle_management_path(current_company), class: "dropdown-item" %>
               <%= link_to '案件作成', new_companies_project_path, class: "dropdown-item" %>
+              <%= link_to '案件一覧', companies_projects_path, class: "dropdown-item" %>
               <%= link_to '会社情報編集', edit_company_path(current_company), class: "dropdown-item" %>
             </div>
           </li>

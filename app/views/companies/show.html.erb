@@ -22,7 +22,7 @@
       <% end %>
     </div>
     <div class="col-6 text-center mt-3">
-      <h3>勤務履歴一覧(前日分)</h3> <%#この横に勤務履歴の一覧ページへのリンクを追加%>
+      <h3>勤務履歴一覧(前日分)</h3> 
       <div style="height: 450px; overflow-y: scroll;">
         <table class="table mt-3">
           <tr>
@@ -33,11 +33,12 @@
           </tr>
           <% @attendances.each do |attendance| %>
           <tr>
+          <% if attendance.clock_out_time.present? %>
             <td><%= attendance.employee.name %></td>
             <td><%= attendance.clock_in_time.strftime("%m月%d日 %H:%M") %></td>
             <td><%= attendance.clock_out_time.strftime("%m月%d日 %H:%M") %></td>
-            <td><%= attendance.work_duration || "退勤時間が登録されていません" %></td>
-            <%#退勤時間が登録されていません→退勤時間登録ページへ遷移%>
+            <td><%= attendance.work_duration %></td>
+          <% end %>
           </tr>
           <% end %>
         </div>

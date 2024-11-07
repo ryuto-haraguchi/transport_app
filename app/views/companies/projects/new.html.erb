@@ -6,32 +6,27 @@
   <div class="row">
     <div class="col-6 text-center mt-3">
         <div class="field mt-3">
-          <%= f.label :project_name, "案件名" %><br />
+          <%= f.label :project_name, "案件名※必須" %><br />
           <%= f.text_field :project_name %>
         </div>
         <div class="field mt-3">
           <%= f.label :description, "内容" %><br />
           <%= f.text_area :description %>
         </div>
-        <div class="field mt-3">
-          <%= f.label :vehicle_weight, "重量" %><br />
-          <%= f.select :vehicle_weight, options_for_select(VEHICLE_WEIGHTS), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
-        </div>
-        <div class="field mt-3">
-          <%= f.label :vehicle_category, "車種1" %><br />
-          <%= f.select :vehicle_category, options_for_select(VEHICLE_CATEGORIES), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
-        </div>
-        <div class="field mt-3">
-          <%= f.label :vehicle_kind, "車種2" %><br />
-          <%= f.select :vehicle_kind, options_for_select(VEHICLE_TYPES), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
-        </div>
-        <div class="field mt-3">
-          <%= f.label :vehicle_kind2, "車種3" %><br />
-          <%= f.select :vehicle_kind2, options_for_select(VEHICLE_TYPES), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
-        </div>
-        <div class="field mt-3">
-          <%= f.label :vehicle_type, "車両情報" %><br />
-          <%= f.text_field :vehicle_type, id: 'vehicle_type_field', readonly: true %>
+        <p class="mt-3">車種選択※必須</p>
+        <div class="row justify-content-center">
+          <div class="field">
+            <%= f.select :vehicle_weight, options_for_select(VEHICLE_WEIGHTS), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
+          </div>
+          <div class="field">
+            <%= f.select :vehicle_category, options_for_select(VEHICLE_CATEGORIES), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
+          </div>
+          <div class="field">
+            <%= f.select :vehicle_kind, options_for_select(VEHICLE_TYPES), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
+          </div>
+          <div class="field">
+            <%= f.select :vehicle_kind2, options_for_select(VEHICLE_TYPES), { prompt: "選択" }, { class: 'dropdown', data: { target: 'vehicle_type_field' } } %>
+          </div>
         </div>
         <div class="field mt-3">
           <%= f.label :amount, "金額" %><br />
@@ -65,20 +60,3 @@
     <% end %>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const dropdowns = document.querySelectorAll('.dropdown');
-    const vehicleTypeField = document.getElementById('vehicle_type_field');
-
-    dropdowns.forEach(dropdown => {
-      dropdown.addEventListener('change', () => {
-        const weight = document.querySelector('[data-target="vehicle_type_field"][name="project[vehicle_weight]"]').value;
-        const category = document.querySelector('[data-target="vehicle_type_field"][name="project[vehicle_category]"]').value;
-        const kind = document.querySelector('[data-target="vehicle_type_field"][name="project[vehicle_kind]"]').value;
-        const kind2 = document.querySelector('[data-target="vehicle_type_field"][name="project[vehicle_kind2]"]').value;
-
-        vehicleTypeField.value = `${weight}${category}${kind}${kind2}`;
-      });
-    });
-  });
-</script>

@@ -9,8 +9,6 @@ class Project < ApplicationRecord
 
   validates :project_name, presence: true
   validates :vehicle_type, presence: true
-  validates :planned_collection_date, presence: true
-  validates :planned_delivery_date, presence: true
 
   def set_vehicle_type(weight, category, kind)
     self.vehicle_type = "#{weight}#{category}#{kind}"

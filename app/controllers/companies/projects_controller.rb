@@ -29,6 +29,9 @@ class Companies::ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to companies_projects_path
   end
 
   private

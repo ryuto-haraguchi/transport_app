@@ -28,8 +28,12 @@
           <td class="text-nowrap"><%= project.amount.present? ? number_to_currency(project.amount.to_i, unit: '円', format: '%n%u', precision: 0) : '未設定' %></td>
           <td class="text-nowrap"><%= project.planned_collection_date.present? ? project.planned_collection_date.strftime('%Y/%m/%d') : '未設定' %></td>
           <td class="text-nowrap"><%= project.planned_delivery_date.present? ? project.planned_delivery_date.strftime('%Y/%m/%d') : '未設定' %></td>
-          <td class="text-nowrap"><%= project.employee&.name.presence || '未設定' %></td>
-          <td class="text-nowrap"><%= project.vehicle&.vehicle_number.presence || '未設定' %></td>
+          <td class="text-nowrap">
+            <%= project.employee&.name.presence || content_tag(:span, '未設定', style: 'color: red;') %>
+          </td>
+          <td class="text-nowrap">
+            <%= project.vehicle&.vehicle_number.presence || content_tag(:span, '未設定', style: 'color: red;') %>
+          </td>
           <td class="text-nowrap"><%= link_to '詳細', companies_project_path(project) %></td>
           <td class="text-nowrap"><%= link_to '編集', edit_companies_project_path(project) %></td>
           <td class="text-nowrap"><%= link_to '削除', companies_project_path(project), method: :delete, data: { confirm: 'Are you sure?' } %></td>

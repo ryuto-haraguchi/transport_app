@@ -11,9 +11,9 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new(employee: current_employee, vehicle: @vehicle, clock_in_time: Time.current)
     if @attendance.save
       @vehicle.update(status: "稼働中")
-      redirect_to employee_path(current_employee), notice: "出勤しました"
+      redirect_to employees_employee_path(current_employee), notice: "出勤しました"
     else
-      redirect_to employee_path(current_employee), alert: "出勤に失敗しました"
+      redirect_to employees_employee_path(current_employee), alert: "出勤に失敗しました"
     end
   end
   
@@ -22,9 +22,9 @@ class AttendancesController < ApplicationController
     if @attendance.save
       @attendance.update(clock_out_time: Time.current)
       @attendance.vehicle.update(status: "未稼働")
-      redirect_to employee_path(current_employee), notice: "退勤しました"
+      redirect_to employees_employee_path(current_employee), notice: "退勤しました"
     else
-      redirect_to employee_path(current_employee), alert: "退勤に失敗しました"
+      redirect_to employees_employee_path(current_employee), alert: "退勤に失敗しました"
     end
   end
   

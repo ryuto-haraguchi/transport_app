@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class Employees::EmployeesController < ApplicationController
   before_action :authenticate_employee!, only: [:show ,:edit]
 
   def show

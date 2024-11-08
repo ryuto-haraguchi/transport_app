@@ -3,20 +3,20 @@
     <div class="col-6 text-center mt-3">
       <h3>稼動状況一覧</h3>
       <% if @active_employees.any? %>
-      <div style="height: 450px; overflow-y: scroll;">
-        <table class="table mt-3">
-          <% @active_employees.each do |employee| %>
-          <tr>
-            <th>社員名</th>
-            <th>勤務開始時間</th>
-          </tr>
-          <tr>
-            <td><%= employee.name %></td>
-            <td><%= Time.parse(employee.clock_in_time).strftime("%m月%d日 %H:%M")%></td>
-          </tr>
-        </table>
-      </div>
-          <% end %>
+        <div style="height: 450px; overflow-y: scroll;">
+          <table class="table mt-3">
+            <tr>
+              <th>社員名</th>
+              <th>勤務開始時間</th>
+            </tr>
+            <% @active_employees.each do |employee| %>
+              <tr>
+                <td><%= employee.name %></td>
+                <td><%= Time.parse(employee.clock_in_time).strftime("%m月%d日 %H:%M") %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
       <% else %>
         <p class="mt-3">稼働中の社員はいません</p>
       <% end %>
@@ -32,19 +32,17 @@
             <th>稼動時間</th>
           </tr>
           <% @attendances.each do |attendance| %>
-          <tr>
-          <% if attendance.clock_out_time.present? %>
-            <td><%= attendance.employee.name %></td>
-            <td><%= attendance.clock_in_time.strftime("%m月%d日 %H:%M") %></td>
-            <td><%= attendance.clock_out_time.strftime("%m月%d日 %H:%M") %></td>
-            <td><%= attendance.work_duration %></td>
+            <% if attendance.clock_out_time.present? %>
+              <tr>
+                <td><%= attendance.employee.name %></td>
+                <td><%= attendance.clock_in_time.strftime("%m月%d日 %H:%M") %></td>
+                <td><%= attendance.clock_out_time.strftime("%m月%d日 %H:%M") %></td>
+                <td><%= attendance.work_duration %></td>
+              </tr>
+            <% end %>
           <% end %>
-          </tr>
-          <% end %>
-        </div>
         </table>
+      </div>
     </div>
   </div>
 </div>
-
-

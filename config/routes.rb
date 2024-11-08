@@ -28,23 +28,20 @@ Rails.application.routes.draw do
   resources :vehicles, only: [:new, :create, :show, :edit, :update, :destroy]
 
   namespace :employees do
+    resources :employees, only: [:show, :edit] 
     resources :projects, only: [:index, :show] do
       member do
         patch :start_project 
         patch :complete_project 
       end
     end
-
-  resources :employees, only: [:show, :edit] 
+  end
 
   resources :attendances, only: [:create, :update, :index, :new, :show] do
     member do
       post 'clock_in', to: 'attendances#clock_in', as: 'clock_in'
       post 'clock_out', to: 'attendances#clock_out', as: 'clock_out'
     end
-  end
-
-  
   end
 
 end

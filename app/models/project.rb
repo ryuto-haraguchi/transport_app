@@ -8,7 +8,10 @@ class Project < ApplicationRecord
   enum status: { 未集荷: 0, 進行中: 1, 完了: 2 }
 
   validates :project_name, presence: true
+  validates :description, presence: true
   validates :vehicle_type, presence: true
+  
+
 
   def set_vehicle_type(weight, category, kind)
     self.vehicle_type = "#{weight}#{category}#{kind}"

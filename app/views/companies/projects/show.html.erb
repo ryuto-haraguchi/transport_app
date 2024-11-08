@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-6 offset-3 text-center mt-3">案件詳細</h2>
+  </div>
+  <div class="row mt-3">
+    <div class="col-6 text-center mt-3">
+      <div>
+        <p><strong>【案件名】</strong></p>
+        <p><%= @project.project_name %></p>
+      </div>
+      <div>
+        <p><strong>【内容】</strong></p>
+        <p><%= @project.description %></p>
+      </div>
+      <div>
+        <p><strong>【車種】</strong></p>
+        <p><%= @project.vehicle_type %></p>
+      </div>
+      <div>
+        <p><strong>【金額】</strong></p>
+        <p><%= @project.amount.present? ? number_to_currency(@project.amount, unit: "¥", precision: 0, delimiter: ",") : "未設定" %></p>
+      </div>  
+    </div>
+    <div class="col-6 text-center mt-3">
+      <div>
+        <p><strong>【集荷日】</strong></p>
+        <p><%= @project.planned_collection_date&.strftime('%Y/%m/%d %H:%M') || "未設定" %></p>
+      </div>
+      <div>
+        <p><strong>【配達日】</strong></p>
+        <p><%= @project.planned_delivery_date&.strftime('%Y/%m/%d %H:%M') || "未設定" %></p>
+      </div>
+      <div>
+        <p><strong>【担当者】</strong></p>
+        <p><%= @project.employee&.name.presence || "未設定" %></p>
+      </div>
+      <div>
+        <p><strong>【車両】</strong></p>
+        <p><%= @project.vehicle&.vehicle_number.presence || "未設定" %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
           <%= f.text_field :project_name %>
         </div>
         <div class="field mt-3">
-          <%= f.label :description, "内容" %><br />
+          <%= f.label :description, "内容※必須" %><br />
           <%= f.text_area :description %>
         </div>
         <p class="mt-3">車種選択※必須</p>
@@ -30,17 +30,17 @@
         </div>
         <div class="field mt-3">
           <%= f.label :amount, "金額" %><br />
-          <%= f.number_field :amount %>
+          <%= f.number_field :amount, placeholder: "入力例:27000" %>
         </div>
     </div>
     <div class="col-6 text-center mt-3">
         <div class="field mt-3">
           <%= f.label :planned_collection_date, "集荷日" %><br />
-          <%= f.date_field :planned_collection_date %>
+          <%= f.datetime_field :planned_collection_date %>
         </div>
         <div class="field mt-3">
           <%= f.label :planned_delivery_date, "配達日" %><br />
-          <%= f.date_field :planned_delivery_date %>
+          <%= f.datetime_field :planned_delivery_date %>
         </div>
         <div class="field mt-3">
           <%= f.label :employee_id, "担当者" %><br />

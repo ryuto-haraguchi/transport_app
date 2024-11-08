@@ -1,0 +1,45 @@
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12 text-center">
+      <h3>担当案件一覧</h3>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>案件名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @employee_projects.each_with_index do |employee_project, index| %>
+              <tr>
+                <td>
+                  <a class="text-primary" data-toggle="collapse" href="#collapseProject<%= index %>" role="button" aria-expanded="false" aria-controls="collapseProject<%= index %>">
+                    <%= employee_project.project_name %>
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="collapse" id="collapseProject<%= index %>">
+                    <ul class="list-unstyled mt-2">
+                      <li><strong>内容:</strong> 
+                        <span class="text-truncate" style="display: inline-block; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                          <%= employee_project.description %>
+                        </span>
+                      </li>
+                      <li><strong>車種:</strong> <%= employee_project.vehicle_type %></li>
+                      <li><strong>集荷日:</strong> <%= employee_project.planned_collection_date&.strftime('%m/%d %H:%M') || '未定' %></li>
+                      <li><strong>配達日:</strong> <%= employee_project.planned_delivery_date&.strftime('%m/%d %H:%M') || '未定' %></li>
+                      <li><strong>車両番号:</strong> <%= employee_project.vehicle&.vehicle_number || '未定' %></li>
+                      <li><%= link_to '詳細', employees_project_path(employee_project), class: 'btn btn-sm btn-primary mt-2' %></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

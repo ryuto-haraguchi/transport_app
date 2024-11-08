@@ -3,6 +3,7 @@ class Employees::EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
+    @employee_projects = @employee.projects.order(planned_collection_date: :asc)
   end
 
   def edit

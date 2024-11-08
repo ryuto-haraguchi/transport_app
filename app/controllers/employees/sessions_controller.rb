@@ -12,12 +12,12 @@ class Employees::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-    employee_path(resource) 
+    employees_employee_path(resource) 
   end
 
   def redirect_if_signed_in
     if employee_signed_in?
-      redirect_to employee_path(current_employee) 
+      redirect_to employees_employee_path(current_employee) 
     end
   end
 

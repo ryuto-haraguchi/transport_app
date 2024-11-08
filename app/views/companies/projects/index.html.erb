@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2 class="col-6 offset-3 text-center mt-3">案件一覧</h2>
+    <h2 class="col-6 offset-3 text-center mt-3">未完了案件一覧</h2>
 </div>
 <div class="row mt-3 text-center">
   <div class="col-12"> 
@@ -19,13 +19,13 @@
       </tr>
       <% @projects.each do |project| %>
         <tr>
-          <td class="text-nowrap text-truncate" style="max-width: 200px;">
+          <td class="text-nowrap text-truncate" style="max-width: 100px;">
             <%= project.project_name.presence %>
           </td>
-          <td class="text-nowrap text-truncate" style="max-width: 200px;">
+          <td class="text-nowrap text-truncate" style="max-width: 100px;">
             <%= project.description.presence %>
           </td>
-          <td class="text-nowrap text-truncate" style="max-width: 200px;">
+          <td class="text-nowrap text-truncate" style="max-width: 100px;">
             <%= project.vehicle_type.presence %>
           </td>
           <td class="text-nowrap">

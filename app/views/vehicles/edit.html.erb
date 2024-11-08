@@ -23,6 +23,9 @@
         <%= f.submit "更新" %>
       </div>
     <% end %>
+      <div>
+        <%= link_to "削除", vehicle_path(@vehicle), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>

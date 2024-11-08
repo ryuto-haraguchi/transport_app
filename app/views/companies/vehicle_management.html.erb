@@ -10,20 +10,20 @@
 <table class="table container w-100">
   <tr class="row">
     <th class="col-2 text-center">車両番号</th>
-    <th class="col-1 text-center">車種</th>
+    <th class="col-2 text-center">車種</th>
     <th class="col-2 text-center">走行距離</th>
-    <th class="col-1 text-center">燃油種類</th>
-    <th class="col-2 text-center">稼働状況</th>
+    <th class="col-2 text-center">燃油種類</th>
+    <th class="col-1 text-center">稼働状況</th>
     <th class="col-2 text-center">ドライバー名</th>
-    <th class="col-2 text-center">設定</th>
+    <th class="col-1 text-center">設定</th>
   </tr>
   <% @company_vehicles.each do |vehicle| %>
   <tr class="row">
     <td class="col-2 text-center"><%= vehicle.vehicle_number %></td>
-    <td class="col-1 text-center"><%= vehicle.vehicle_type %></td>
+    <td class="col-2 text-center"><%= vehicle.vehicle_type %></td>
     <td class="col-2 text-center"><%= vehicle.mileage.to_s + " km" %></td>
-    <td class="col-1 text-center"><%= vehicle.fuel_type %></td>
-    <td class="col-2 text-center"><%= vehicle.status %></td>
+    <td class="col-2 text-center"><%= vehicle.fuel_type %></td>
+    <td class="col-1 text-center"><%= vehicle.status %></td>
     <td class="col-2 text-center">
       <% latest_attendance = vehicle.attendances.order(clock_in_time: :desc).first %>
       <% if latest_attendance&.employee && vehicle.status == "稼働中" %>
@@ -32,7 +32,7 @@
         未使用
       <% end %>
     </td>
-    <td class="col-2 text-center">
+    <td class="col-1 text-center">
       <%= link_to "編集", edit_vehicle_path(vehicle) %>
     </td>
   </tr>

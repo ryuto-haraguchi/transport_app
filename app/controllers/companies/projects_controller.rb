@@ -1,7 +1,7 @@
 class Companies::ProjectsController < ApplicationController
 
   def index
-    @projects = Project.where(status: [:未集荷, :進行中], company_id: current_company.id)
+    @projects = Project.where(company_id: current_company.id)
   end
 
   def show

@@ -1,7 +1,14 @@
 class Companies::ProjectsController < ApplicationController
 
   def index
-    @projects = Project.where(company_id: current_company.id)
+    
+    if params[:status] == "完了"
+      @projects = Project.where(company_id: current_company.id, status: "完了")
+    elsif params[:status] == "進行中"
+      @projects = Project.where(company_id: current_company.id, status: "進行中")
+    else
+      @projects = Project.where(company_id: current_company.id, status: "未集荷")
+    end
   end
 
   def show

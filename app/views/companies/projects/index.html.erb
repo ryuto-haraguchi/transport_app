@@ -2,9 +2,9 @@
   <div class="row">
     <h2 class="col-6 offset-3 text-center mt-3"><%= params[:status] || '未集荷' %>案件一覧</h2>
     <div class="btn-group mt-3 col-3" role="group">
-      <%= link_to '未集荷', companies_projects_path(status: '未集荷'), class: "btn btn-primary filter-button" %>
-      <%= link_to '進行中', companies_projects_path(status: '進行中'), class: "btn btn-primary filter-button" %>
-      <%= link_to '完了', companies_projects_path(status: '完了'), class: "btn btn-secondary filter-button" %>
+      <%= link_to '未集荷', companies_projects_path(status: '未集荷'), class: "btn btn-primary filter-button d-flex justify-content-center align-items-center" %>
+      <%= link_to '進行中', companies_projects_path(status: '進行中'), class: "btn btn-primary filter-button d-flex justify-content-center align-items-center" %>
+      <%= link_to '完了', companies_projects_path(status: '完了'), class: "btn btn-primary filter-button d-flex justify-content-center align-items-center" %>
     </div>
 
   </div>

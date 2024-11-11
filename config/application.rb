@@ -20,5 +20,7 @@ module TransportApp
     config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
     DAYS_OF_WEEK = ["日", "月", "火", "水", "木", "金", "土"]
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
   end
 end

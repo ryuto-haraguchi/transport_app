@@ -17,7 +17,7 @@ class Companies::SessionsController < Devise::SessionsController
   end
 
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:company_code])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:company_code, :password])
   end
 
   def after_timeout_path_for(resource_or_scope)

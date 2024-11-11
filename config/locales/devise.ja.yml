@@ -1,7 +1,7 @@
 ja:
   activerecord:
     attributes:
-      user:
+      company:
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -25,8 +25,12 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        name: 会社名
+        address: 住所
+        contact_number: 電話番号
+        company_code: 会社コード
     models:
-      user: ユーザー
+      company: 会社
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -139,5 +143,5 @@ ja:
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
       not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
-        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
+        one: エラーが発生しました
+        other: "%{count} 件のエラーが発生しました"
